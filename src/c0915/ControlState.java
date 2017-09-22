@@ -10,6 +10,6 @@ public class ControlState {
             System.out.println("point2");
         }
         System.out.println("point3");
-        switch();
+        //switch();
     }
 }
