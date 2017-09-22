@@ -19,5 +19,6 @@ public class ClassBase00 {
         a = null;
 
 
+
     }
 }
