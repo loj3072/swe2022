@@ -40,6 +40,7 @@ public class Constructor {
 //
     //}
 
+
     public String getName() {
         return firstname + seperator + lastname;
     }
