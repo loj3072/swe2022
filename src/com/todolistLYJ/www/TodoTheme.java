@@ -1,6 +1,6 @@
 package com.todolistLYJ.www;
 
-public class TodoTheme {
+public class TodoTheme { //enum을 적용할 수 있나보다?!
     String[] colors = {"blue", "red", "purple", "green", "sky"};
     String[] pictures = {"mountain", "desert", "island", "airplane", "city", "nothing"};
     String nowColor;
