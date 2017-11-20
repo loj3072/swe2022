@@ -1,18 +1,17 @@
 package com.todolistLYJ.www;
 
 public class TodoTheme { //enum을 적용할 수 있나보다?!
-    String[] colors = {"blue", "red", "purple", "green", "sky"};
-    String[] pictures = {"mountain", "desert", "island", "airplane", "city", "nothing"};
-    String nowColor;
-    String nowPicture;
+    public enum Colors {BLUE, RED, PURPLE, GREEN, SKY}
+    public enum Images {MOUNTAIN, DESERT, ISLAND, AIRPLANE, CITY, NOTHING}
 
     TodoTheme(){
-        nowColor = colors[0];
-        nowPicture = pictures[0];
+        Colors nowColor = Colors.BLUE;
+        Images nowImage = Images.MOUNTAIN;
     }
 
     public void changeColor(){}
 
-    public void changePicture(){}
+    public void changeImage(){}
+
 
 }
