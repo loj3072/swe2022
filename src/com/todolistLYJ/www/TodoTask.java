@@ -6,43 +6,63 @@ package com.todolistLYJ.www;
 //완료 체크, 이름 수정, 미리알림설정, 기한설정
 //날짜 / 시간
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class TodoTask { //implement Comparable
+public class TodoTask implements Comparable<TodoTask> { //implement Comparable
     // date 객체 쓰기
     String taskName;
     boolean isAlarm;
-    boolean setDate;
-    Date date = new Date();
+    boolean deadlineOver;
+    Date deadline;
+    boolean completed;
+    boolean show;
+    TimerTask todoTimerTask = new TimerTask() {
+        @Override
+        public void run() {
+            System.out.println("Alarm!!!");
+        }
+    };
 
     TodoTask(String taskName){
         this.taskName = taskName;
-        boolean isAlarm = false;
-        boolean setDate = false;
+        this.isAlarm = false;
+        this.deadlineOver = false;
+        this.completed = false;
+        this.show = true;
+        this.deadline = null;
     }
 
-    public void changeTaskName(String newTaskName){
-        this.taskName = newTaskName;
+    public void changeTaskName(String newTaskName){ this.taskName = newTaskName; }
+
+    public void taskCompleted(){ this.completed = true; }
+
+    public void taskUncompleted(){ this.completed = false; }
+
+    public void alarmSet(){ this.isAlarm = true; }
+
+    public void alarm(Date alarmDate, Timer alarmTime){ // 날짜, 시간
+        while (this.isAlarm){
+            Timer t = alarmTime;
+            Date d = alarmDate;
+            t.schedule(todoTimerTask, d);
+        }
     }
 
-    public void settingAlarm(){ // 날짜, 시간
-
-
+    public void setDeadline(Date deadline){ // 날짜
+        this.deadline = deadline;
     }
 
-    public void settingDate(){ // 날짜
-
+    public void checkDeadlineOver(Date deadline){
+        Date today = new Date();
+        if (deadline.after(today)){
+            this.deadlineOver = true;
+        }
     }
 
-    public void deleteTask(){
-
-    }
-
-    public void getDateTime(){
-        SimpleDateFormat formatter = new SimpleDateFormat ( "yyyy.MM.dd HH:mm:ss", Locale.KOREA );
-        Date currentTime = new Date ( );
-        String dTime = formatter.format ( currentTime );
+    @Override
+    public int compareTo(TodoTask task) {
+        return taskName.compareTo(task.taskName);
     }
 }

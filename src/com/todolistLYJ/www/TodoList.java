@@ -1,8 +1,9 @@
 package com.todolistLYJ.www;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
-public class TodoList implements Comparable<TodoTask> {
+public class TodoList {
     String listName;
     ArrayList<TodoTask> taskInList;
     TodoTheme theme;
@@ -16,15 +17,23 @@ public class TodoList implements Comparable<TodoTask> {
     //할 일이 아무것도 없으면 없다는 메시지를 줄 메소드도 추가
     //완료했는지
 
-    public void addTask(TodoTask newTask){
+    public String haveTask(){
+        if (this.taskInList.isEmpty())
+            return "There is no task.";
+        return null;
+    }
+
+    public void addTask(TodoTask newTask){ //할 일 추가
         taskInList.add(newTask);
-    }//할 일 추가
+    }
 
-    public void changeListName(String newListName){
+    public void changeListName(String newListName){ //목록 이름 바꾸기
         this.listName = newListName;
-    } //목록 이름 바꾸기
+    }
 
-    public void sortingList(){} // field. 정렬
+    public void sortingList(ArrayList<TodoTask> taskInList){ // field. 정렬
+        Collections.sort(taskInList);
+    }
 
     public void changeTheme(){ //테마 변경
         theme.changeColor();
@@ -32,14 +41,16 @@ public class TodoList implements Comparable<TodoTask> {
     }
 
 
-    public void hideEndTask(){} // field. 완료된 할 일 숨기기 - getList 다시 호출
-
-    //public void shareList(){} //보내기 기능은 안 함
-
-    public void deleteList(){} //
-
-    @Override
-    public int compareTo(TodoTask o) {
-        return 0;
+    public void hideEndTask(){ // field. 완료된 할 일 숨기기 - getList 다시 호출
+        for(TodoTask task : this.taskInList){
+            if (task.completed){
+                task.show = false;
+            }
+        }
     }
+
+    public void deleteTask(TodoTask deleteTask){
+        taskInList.remove(deleteTask);
+    }
+
 }
