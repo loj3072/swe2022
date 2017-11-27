@@ -60,4 +60,21 @@ public class App {
         }
 
     }
+
+    public void taskComplete(String inp, String modList, boolean a) {
+        for (int i = 0; i<this.listInApp.size(); i++){
+            if (modList.equals(this.listInApp.get(i).getListName())){
+                TodoList modL = this.listInApp.get(i);
+                for (int j=0; j<modL.taskInList.size();j++){
+                    if (modL.equals(modL.taskInList.get(j))){
+                        modL.taskInList.get(j).completed = a;
+                        break;
+                    }
+                }
+                break;
+            }else;
+        }
+    }
+
+
 }
