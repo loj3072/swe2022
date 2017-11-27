@@ -15,6 +15,7 @@ public class TodoTask implements Comparable<TodoTask> { //implement Comparable
     String taskName;
     boolean isAlarm;
     boolean deadlineOver;
+    String deadlineStr;
     Date deadline;
     boolean completed;
     boolean show;
@@ -33,6 +34,16 @@ public class TodoTask implements Comparable<TodoTask> { //implement Comparable
         this.show = true;
         this.deadline = null;
     }
+    public String getTaskName() {
+        return this.taskName;
+    }
+    public String getDeadlineStr() {
+        return deadlineStr;
+    }
+    public Date getTaskDeadLine() {
+        return this.deadline;
+    }
+    public boolean getIsAlarm() {return this.isAlarm;}
 
     public void changeTaskName(String newTaskName){ this.taskName = newTaskName; }
 

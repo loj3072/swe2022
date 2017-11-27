@@ -10,16 +10,17 @@ public class EnumTest {
             final Size size = $size; //black list - 불안정
             this.size = size; // white list - 안정
         }
-        public boolean isFit(Person target){
+        /*public boolean isFit(Person target){
             final int base = target.height / 2
             switch(this.size){
                 case SMALL: return base< 50; //enum을 쓰면 switch문에 직접 사용 가능!
                 case MEDIUM: return base < 70;
             }
-            /*switch(this.size.ordinal()){
-                case 0: return target.height/2 < 50;
-                */
-            target.height
+            //switch(this.size.ordinal()){
+                //case 0: return target.height/2 < 50;
+
+            target.height;
+            */
         }
     }
-}
+
