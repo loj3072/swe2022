@@ -2,7 +2,9 @@ package com.todolistLYJ.www;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+//별도의 예외처리 중요!!!
+//이번주 과제: 영속화. (save & load) 추가
+//serialize(직렬화) 메모리 상의 정보들을 일렬로 세워서 저장할 수 있는 상태로 만드는 것 / unserialize
 public class Main {
     Main(){
 
