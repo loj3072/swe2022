@@ -6,11 +6,12 @@ package com.todolistLYJ.www;
 //완료 체크, 이름 수정, 미리알림설정, 기한설정
 //날짜 / 시간
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class TodoTask implements Comparable<TodoTask> { //implement Comparable
+public class TodoTask implements Comparable<TodoTask>, Serializable { //implement Comparable
     // date 객체 쓰기
     String taskName;
     boolean isAlarm;

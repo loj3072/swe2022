@@ -1,10 +1,11 @@
 package com.todolistLYJ.www;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 
-public class TodoList {
+public class TodoList implements Serializable {
     String listName;
     ArrayList<TodoTask> taskInList;
     TodoTheme theme;
@@ -17,6 +18,10 @@ public class TodoList {
 // static메소드는 위쪽에 몰아놓자.
     //할 일이 아무것도 없으면 없다는 메시지를 줄 메소드도 추가
     //완료했는지
+
+    public ArrayList<TodoTask> getTaskInList(){
+        return taskInList;
+    }
 
     public void printList(){
         if (this.taskInList.size() == 0){

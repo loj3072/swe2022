@@ -1,17 +1,43 @@
 package com.todolistLYJ.www;
 
-import com.sun.xml.internal.bind.v2.TODO;
-
-import javax.lang.model.type.NullType;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
-public class App {
-    String appName;
-    ArrayList<TodoList> listInApp;
+public class App implements Serializable{
+    public String appName;
+    private ArrayList<TodoList> listInApp;
 
-    App(String appName){
+    public App(String appName){
         this.appName = appName;
-        this.listInApp = new ArrayList<TodoList>();
+        listInApp = new ArrayList<TodoList>();
+    }
+
+    public void save() throws IOException {
+        Path p = Paths.get("C:/todooo", "todoSave.txt");
+        if (!Files.exists(p)){ Files.createFile(p); }
+        ObjectOutputStream out = new ObjectOutputStream(Files.newOutputStream(p));
+        out.reset();
+        out.writeObject(this);
+    }
+
+    public void load() throws IOException {
+        Path p = Paths.get("C:/todooo", "todoSave.txt");
+        ObjectInputStream in = new ObjectInputStream(Files.newInputStream(p));
+        try {
+            String loaded = (String) in.readObject();
+            in.close();
+            System.out.println(loaded);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public ArrayList<TodoList> getListInApp(){
+        return listInApp;
     }
 
     public void addList(String newListname){

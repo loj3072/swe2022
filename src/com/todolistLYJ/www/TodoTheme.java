@@ -1,6 +1,8 @@
 package com.todolistLYJ.www;
 
-public class TodoTheme { //enum을 적용할 수 있나보다?!
+import java.io.Serializable;
+
+public class TodoTheme implements Serializable { //enum을 적용할 수 있나보다?!
     public enum Colors {BLUE, RED, PURPLE, GREEN, SKY}
     public enum Images {MOUNTAIN, DESERT, ISLAND, AIRPLANE, CITY, NOTHING}
 
