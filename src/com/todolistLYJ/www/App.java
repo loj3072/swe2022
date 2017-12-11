@@ -27,9 +27,9 @@ public class App implements Serializable{
         Path p = Paths.get("C:/todooo", "todoSave.txt");
         ObjectInputStream in = new ObjectInputStream(Files.newInputStream(p));
         try {
-            String loaded = (String) in.readObject();
+            App loaded = (App) in.readObject();
+            this.listInApp = loaded.listInApp;
             in.close();
-            System.out.println(loaded);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
